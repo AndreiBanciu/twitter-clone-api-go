@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/AndreiBanciu/twitter-clone-api-go/data"
-	"github.com/AndreiBanciu/twitter-clone-api-go/data_access"
-	"github.com/AndreiBanciu/twitter-clone-api-go/dto"
+	"github.com/AndreiBanciu/twitter-clone-api-go/src/data"
+	"github.com/AndreiBanciu/twitter-clone-api-go/src/data_access"
+	"github.com/AndreiBanciu/twitter-clone-api-go/src/dto"
 	"github.com/gofiber/fiber/v2"
 )
 

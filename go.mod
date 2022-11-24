@@ -1,4 +1,4 @@
-module github.com/BDavid57/go-api-fiber
+module github.com/AndreiBanciu/twitter-clone-api-go
 
 go 1.19
 
