@@ -1,17 +1,31 @@
 package main
 
 import (
-	"github.com/AndreiBanciu/twitter-clone-api-go/src/api"
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
+
+	"github.com/AndreiBanciu/twitter-clone-api-go/src/controllers"
+	"github.com/AndreiBanciu/twitter-clone-api-go/src/db"
 )
 
 func main() {
-	router := gin.Default()
-    router.GET("/tweets", api.GetTweets)
-    router.GET("/tweets/:id", api.GetTweetById)
-    router.POST("/tweets", api.PostTweet)
-    router.DELETE("/tweets/:id", api.DeleteTweet)
-    router.PUT("/tweets/:id", api.EditTweet)
+	app := fiber.New()
 
-    router.Run("localhost:5000")
+	appApi := app.Group("/api")
+
+	// comes from db
+	appApi.Get("/tweets", controllers.GetTweets)
+	appApi.Get("/tweets/:id", controllers.GetTweetById)
+	appApi.Post("/tweets", controllers.PostTweet)
+	appApi.Delete("/tweets/:id", controllers.DeleteTweet)
+	appApi.Put("/tweets/:id", controllers.EditTweet)
+	
+	// comes from hardcoded data
+	appApi.Post("/todo", controllers.PostTodo)
+	appApi.Get("/todo/:id", controllers.GetTodo)
+	appApi.Get("/todo", controllers.GetTodos)
+	appApi.Delete("/todo/:id", controllers.DeleteTodo)
+	appApi.Put("/todo/:id", controllers.EditTodo)
+		
+	db.ConnectToDb()
+	app.Listen("localhost:5000")
 }
