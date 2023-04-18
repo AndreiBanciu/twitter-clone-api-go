@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"github.com/AndreiBanciu/twitter-clone-api-go/src/data"
 	"github.com/AndreiBanciu/twitter-clone-api-go/src/data_access"
 	"github.com/AndreiBanciu/twitter-clone-api-go/src/dto"
 	"github.com/gofiber/fiber/v2"
@@ -23,14 +22,4 @@ func GetTweets(c *fiber.Ctx) error {
 	}
 	
 	return c.Status(fiber.StatusOK).JSON(response)
-}
-
-// Get all from hardcoded data
-func GetTodos(c *fiber.Ctx) error {
-	response := dto.GetAllTodosResponse {
-		Data: data.Todos,
-		Total: len(data.Todos),
-	}
-
-	return c.JSON(response)
 }

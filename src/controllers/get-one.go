@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"github.com/AndreiBanciu/twitter-clone-api-go/src/data"
 	"github.com/AndreiBanciu/twitter-clone-api-go/src/data_access"
 	"github.com/gofiber/fiber/v2"
 )
@@ -19,20 +18,4 @@ func GetTweetById(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(tweet)
-}
-
-// Get one from hardcoded data
-func GetTodo(c *fiber.Ctx) error {
-	id := c.Params("id")
-
-	for _, item := range data.Todos {
-		if item.ID == id {
-			return c.JSON(item)
-			
-		}
-	}
-
-	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
-		"message": "Todo not found",
-	})
 }
